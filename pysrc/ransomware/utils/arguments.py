@@ -39,10 +39,17 @@ class Arguments:
                 .shorthand('-sr')
         )
 
-        # stop-runtime-and recover
+        # recover
         self.arguments.__add__(
             "--rec",
             ArgumentDescription().shorthand('-rec')
+        )
+        
+        # help
+        self.arguments.__add__(
+            "--help",
+            ArgumentDescription()
+                .shorthand('-h')
         )
 
         self.arguments.__analyse__()
