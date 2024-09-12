@@ -1,11 +1,18 @@
 from .core.supervisor import selfstart, recover, Runtime
 from .utils.arguments import Arguments
+from .utils.helptext import HelpText
 
 import sys
+
+__version__ = "0.1.0"
 
 def main():
     arguments = Arguments().get
     fetchtype = Arguments().fetchtypes
+
+    if arguments.__there__("--help"):
+        print(HelpText.text.format(__version__))
+        sys.exit(0)
 
     if arguments.__there__('--directories'):
         directories = arguments.__fetch__('--directories', fetchtype.TILL_NEXT)
@@ -28,4 +35,3 @@ def main():
     elif arguments.__there__("--rec"):
         runtime = Runtime(directories=directories, types=types)
         runtime.recover()
-    
