@@ -6,11 +6,14 @@ build-backend = "maturin"
 name = "test-ransomware"
 version = "0.1"
 description = "Ransomware for Testing purpose"
-dependencies = ["maturin"]
+dependencies = ["maturin", "argpi"]
 
 [tool.maturin]
 python-source = "pysrc"
 module-name = "ransomware.rlib"
+
+[project.scripts]
+rw = "ransomware.main:main"
 
 [project.urls]
 GitHub = "https://github.com/d33p0st/looger"
