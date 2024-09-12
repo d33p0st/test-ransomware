@@ -1,0 +1,20 @@
+name: Build
+
+on: [push]
+
+jobs:
+    Build:
+        strategy:
+            matrix:
+                os: [ubuntu-latest, macos-latest, windows-latest]
+        
+        runs-on: ${{ matrix.os }}
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+
+            - name: Build Test
+              uses: d33p0st/python-rust-mix-build@v4
+              with:
+                python-version: 3.12
